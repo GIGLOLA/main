@@ -290,7 +290,7 @@ cvv.addEventListener('input', checkAllValid);
 
 payBtn.addEventListener('click', () => {
   // encode URI components to be safe
-  const url = `/successed.html?name=${encodeURIComponent(name)}&dates=${encodeURIComponent(dates)}`;
+  const url = `./successed.html?name=${encodeURIComponent(name)}&dates=${encodeURIComponent(dates)}`;
   window.location.href = url; // this performs the redirect
 });
 
