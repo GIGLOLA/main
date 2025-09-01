@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Hotels Booking</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('background.jpg') no-repeat center top;
+      background-size: cover;
+      background-attachment: fixed;
+      color: white;
+      text-align: center;
+      overflow-y: scroll;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 20px;
+    }
+
+    h1 {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px 40px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+
+    .booking-form {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .booking-form input[type="text"] {
+      width: 90%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .booking-form button {
+      padding: 12px 25px;
+      margin-top: 20px;
+      font-size: 16px;
+      background-color: #ff9800;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .booking-form button:hover {
+      background-color: #e68900;
+    }
+
+    footer {
+      text-align: center;
+      padding: 5px;
+      font-size: 8px;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <h1>პარაგრაფის კორპორატიული შეთავაზება</h1>
+    <div class="booking-form">
+      <input type="text" id="name" placeholder="სახელი და გვარი" required>
+      <input type="text" id="dates" placeholder="ჯავშნის თარიღი" required>
+      <button onclick="checkAvailability()">თარიღების შემოწმება ფასზე</button>
+    </div>
+  </div>
+
+  <footer>
+    <p style="font-size: 14px;">*შეთავაზება მოქმედებს მხოლოდ ქართუ ბანკის ბარათით გადახდისას*</p>
+    <p style="font-size: 14px;">*შეთავაზება გულისხმბოს 1 ოთახს ორ ადამიანზე სამჯერადი კვებით*</p>
+    <p style="font-size: 14px;">*სხვა კითხვების შემთხვევაში დაუკავშირდით ჩვენს კორპორატიული შეთავაზებების მართვის თანამშრომელს tel: 551 17 80 86*</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    flatpickr("#dates", {
+      mode: "range",
+      dateFormat: "Y-m-d",
+      minDate: "2025-08-18"
+    });
+
+    function checkAvailability() {
+  const name = document.getElementById('name').value.trim();
+  const dateRange = document.getElementById('dates').value.trim();
+
+  if (!name || !dateRange || !name.includes(" ")) {
+    alert("გთხოვთ ყველა ველი იყოს სწორად შევსებული");
+    return;
+  }
+
+  const pricePerNight = 200;
+  const [startDate, endDate] = dateRange.split(' to ');
+  const nights = Math.max(1, Math.round((new Date(endDate) - new Date(startDate)) / (1000 * 60 * 60 * 24)));
+  const totalPrice = pricePerNight * nights;
+  const discountedPrice = totalPrice * 0.3;
+
+  // Remove old popup if it exists
+  const oldPopup = document.getElementById('availability-popup');
+  if (oldPopup) {
+    oldPopup.remove();
+  }
+
+  // Create new popup
+  const popupContainer = document.createElement('div');
+  popupContainer.id = 'availability-popup';
+  popupContainer.style.marginTop = '30px';
+  popupContainer.innerHTML = `
+    <div style="background: rgba(0,0,0,0.9); padding: 30px; border-radius: 12px; color: white; text-align: center; max-width: 400px; margin: 0 auto;">
+      <h2>თქვენ მოხვდით პირველ 50 თანამშრომელში!</h2>
+      <p style="font-size: 18px;">ჩვეულებრივი ფასი: <s>₾${totalPrice.toFixed(2)}</s></p>
+      <p style="font-size: 22px; color: #4caf50;">ფასი კორპორატიული შეთავაზებით (-70%): <strong>₾${discountedPrice.toFixed(2)}</strong><br>  ${nights} ღამე</p>
+      <button style="margin-top: 15px; padding: 10px 20px; font-size: 16px; background-color: #ff9800; color: white; border: none; border-radius: 6px; cursor: pointer;"
+        onclick="window.location.href='/paypage.html?name=${encodeURIComponent(name)}&dates=${encodeURIComponent(dateRange)}&price=${discountedPrice.toFixed(2)}'">
+        დაჯავშნა
+      </button>
+    </div>
+  `;
+
+  const contentDiv = document.querySelector('.content');
+  contentDiv.appendChild(popupContainer);
+}
+
+    
+  </script>
+</body>
+</html>

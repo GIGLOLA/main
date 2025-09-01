@@ -1,0 +1,1460 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no" />
+    <title>ინტრანეტი - &#x10DB;&#x10D7;&#x10D0;&#x10D5;&#x10D0;&#x10E0;&#x10D8; &#x10D2;&#x10D5;&#x10D4;&#x10E0;&#x10D3;&#x10D8;</title>
+
+    
+    
+        <link href="/fonts/markGeo/stylesheet.css" rel="stylesheet" />
+
+        <link rel="stylesheet" href="/bower_components/fullcalendar/dist/fullcalendar.min;p">
+        <!-- uikit -->
+        <link rel="stylesheet" href="/bower_components/uikit/css/uikit.almost-flat.min.css?v=SWFfDBhQk53-GGaYNcuOwMs_EkebCqYNEhfzCpy8MEQ" media="all">
+
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="/w2ui/w2ui-1.5.rc1.css" rel="stylesheet" />
+
+        <link href="/css/select2.css" rel="stylesheet" />
+
+
+        <!-- kendo UI -->
+        <link rel="stylesheet" href="/bower_components/kendo-ui/styles/kendo.common-material.min.css" />
+        <link rel="stylesheet" href="/bower_components/kendo-ui/styles/kendo.material.min.css" id="kendoCSS" />
+
+        <!-- flag icons -->
+        <link rel="stylesheet" href="/assets/icons/font_awesome/css/font-awesome.min.css?v=7Q8FEB1IBybFi81JVqHnsC8StTjQIFjxsOv9q-in70I" media="all">
+
+        <!-- altair admin -->
+        <link rel="stylesheet" href="/assets/css/main.min.css?v=flUdiizGxB8d2LxAlWt4Zjl6YvDGfOWHggGSRFxKumk" media="all">
+        <!-- themes -->
+        <link rel="stylesheet" href="/assets/css/themes/themes_combined.min.css?v=xFKcdRSCVd7z5LIcUO9A6D-_LepuEF-ZFmZBIU9h9SA" media="all">
+        <link href="/fonts/font.css" rel="stylesheet" />
+ა
+        <link href="/css/ChatStyle.css" rel="stylesheet" />
+        <link href="/JQueryUI/themes/base/jquery.ui.all.css" rel="stylesheet" />
+
+        <link href="/lib/emoji/emojionearea.min.css" rel="stylesheet" />
+        <link href="/css/jquery-confirm.css" rel="stylesheet" />
+
+
+    
+
+
+
+
+</head>
+<body class="sidebar_main_open sidebar_main_swipe sidebar_secondary_active">
+
+    <style>
+        .sidebar_secondary_active_swipe {
+            margin-right: 310px;
+        }
+
+        .sidebar_secondary_hide {
+            visibility: hidden;
+        }
+
+        .sec_act {
+            margin-right: 0px !important;
+        }
+
+        .sec_act1 {
+            margin-right: 310px !important;
+        }
+
+        .menu_section ul li a {
+            font-family: 'Mark GEO CAPS' !important;
+            font-size: 13px !important;
+        }
+
+        .OnileSearchInput {
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 4px;
+            line-height: 24px;
+            border: 1px solid rgba(0,0,0,.12);
+            color: #212121;
+            box-sizing: border-box;
+            -webkit-transition: height .1s ease;
+            transition: height .1s ease;
+            border-radius: 0;
+            -webkit-appearance: none;
+        }
+
+        .onlineSearchPanel {
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-bottom: 20px;
+            z-index: 99999999;
+            width: 100%;
+        }
+        a{
+            text-decoration: none!important;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+        }
+    </style>
+
+
+    <div id="divChatWindow" class="chatWindow" style="display:none;">
+        <input type="text" id="hdEmailID" name="hdEmailID" />
+    </div>
+
+    <!-- main header -->
+    <header id="header_main">
+        <div class="header_main_content">
+            <div class="uk-navbar">
+
+                <!-- main sidebar switch -->
+                <a href="#" id="sidebar_main_toggle" class="sSwitch sSwitch_left">
+                    <span class="sSwitchIcon"></span>
+                </a>
+
+                <!-- secondary sidebar switch -->
+                <a href="#" id="sidebar_secondary_toggle" class="sSwitch sSwitch_right sidebar_secondary_check">
+                    <span class="sSwitchIcon"></span>
+                </a>
+
+
+                <div id="menu_top_dropdown" class="uk-float-left uk-hidden-small">
+                    <div class="uk-button-dropdown" data-uk-dropdown="{mode:'click'}">
+                        <a href="#" id="main_search_btn" class="top_menu_toggle"><i class="material-icons md-24 md-light">&#xE8B6;</i>ძებნა</a>
+                    </div>
+                </div>
+
+
+
+                <div class="uk-navbar-flip">
+                    <ul class="uk-navbar-nav user_actions">
+                        <li>
+                            <a href="#" id="clock" class="user_action_icon uk-visible-large" style="font-size: 25px;">
+                                11:22<sup id="seconds">31</sup>
+                            </a>
+                        </li>
+
+
+
+                        <li data-uk-dropdown="{mode:'click',pos:'bottom-right'}">
+                            <a href="#" class="user_action_icon" id="ntf"><i class="material-icons md-24 md-light">&#xE7F4;</i><span class="uk-badge" style="" id="badgeCount">0</span></a>
+                            <div class="uk-dropdown uk-dropdown-xlarge">
+                                <div class="md-card-content" id="notifications">
+                                    
+
+<script src="/lib/jquery/dist/jquery.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        $("#badgeCount").html(0);
+        if (0 !== 0) {
+            $("#badgeCount").css("background-color", "#ff0000");
+        } else {
+            $("#badgeCount").css("background-color", "");
+        }
+        
+    });
+</script>
+
+<ul class="uk-tab uk-tab-grid" data-uk-tab="{connect:'#header_alerts',animation:'slide-horizontal'}">
+    <li class="uk-width-1-2 uk-active" id="firstTab"><a href="#" class="js-uk-prevent uk-text-small">განაცხადები (0)</a></li>
+    <li class="uk-width-1-2" id="secondTab"><a href="#" class="js-uk-prevent uk-text-small">შეტყობინებები (0)</a></li>
+</ul>
+<ul id="header_alerts" class="uk-switcher uk-margin">
+    <li>
+        <ul class="md-list md-list-addon">
+
+        </ul>
+        <div class="uk-text-center uk-margin-top uk-margin-small-bottom">
+            <a class="md-btn md-btn-flat md-btn-flat-primary js-uk-prevent" href="/Flow">განაცხადების ნახვა</a>
+        </div>
+    </li>
+    <li>
+        <ul class="md-list md-list-addon">
+
+        </ul>
+        <div class="uk-text-center uk-margin-top uk-margin-small-bottom">
+            <a href="/Flow?notify=1" class="md-btn md-btn-flat md-btn-flat-primary js-uk-prevent">შეტყობინებების ნახვა</a>
+        </div>
+    </li>
+
+</ul>
+
+                                </div>
+                            </div>
+                        </li>
+                        
+
+
+
+    <li data-uk-dropdown="{mode:'click',pos:'bottom-right'}">
+    <a href="#" class="user_action_image"><img class="md-user-image" src="intra-res/staff/2733.jpg" alt="" style="height:34px;border-radius:30%;" /></a>
+        <div class="uk-dropdown uk-dropdown-small" style="width:180px">
+            <ul class="uk-nav js-uk-prevent">
+                <li><a href="/Employees/Profile/c0cb4d6b-9b8d-4e11-afb9-800a3a139d9b">ინფორმაცია</a></li>
+                <li><a href="/Employees/Profile/c0cb4d6b-9b8d-4e11-afb9-800a3a139d9b?stat=1">აღრიცხვა</a></li>
+                <li><a href="/Employees/Profile/c0cb4d6b-9b8d-4e11-afb9-800a3a139d9b?stat=2">Remote აღრიცხვა</a></li>
+            </ul>
+        </div>
+    </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="header_main_search_form">
+            <i class="md-icon header_main_search_close material-icons">&#xE5CD;</i>
+            <form class="uk-form uk-autocomplete" data-uk-autocomplete="{source:'/Home/Search'}" id="search_main" method="post" action="/Home/SearchResult">
+                <input type="text" class="header_main_search_input" id="searchField" name="searchField" />
+                <button class="header_main_search_btn uk-button-link"><i class="md-icon material-icons">&#xE8B6;</i></button>
+                <script type="text/autocomplete">
+                    <ul class="uk-nav uk-nav-autocomplete uk-autocomplete-results">
+                        {{~items}}
+                        <li data-value="{{ $item.firstName }}">
+                            <a href="/Employees/Profile/{{ $item.id }}">
+                                <div class="uk-grid">
+                                    <div class="uk-width-medium-1-10 uk-row-first" style="width:7%;">
+                                        <img src="{{$item.image}}" width="40" />
+                                    </div>
+
+                                    <div class="uk-width-medium-7-10">
+                                        {{ $item.firstName }} {{ $item.lastName }} <br />
+                                        <span class="uk-text-muted uk-text-small">{{{ $item.tel }}}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        {{/items}}
+                    </ul>
+                </script>
+            </form>
+        </div>
+    </header><!-- main header end -->
+    <!-- main sidebar -->
+    <aside id="sidebar_main">
+
+        <div class="sidebar_main_header" style="background-position: 0px !important;">
+            <div class="sidebar_logo" style="height: 89px !important;">
+                <a class="sSidebar_hide sidebar_logo_large" href="/">
+                    <img class="logo_regular" src="/images/logonew3.png" alt="" />
+                    <img class="logo_light" src="/assets/img/logo_main_white.png" alt="" height="15" width="71" />
+                </a>
+                <a class="sSidebar_show sidebar_logo_small" href="/">
+                    <img class="logo_regular" src="/assets/img/logo_main_small.png" alt="" height="32" width="32" />
+                    <img class="logo_light" src="/assets/img/logo_main_small_light.png" alt="" height="32" width="32" />
+                </a>
+            </div>
+        </div>
+
+        <div class="menu_section">
+            <ul>
+                <li class="current_section" title="მთავარი გვერდი">
+                    <a href="/">
+                        <span class="menu_icon"><i class="material-icons">&#xE88A;</i></span>
+                        <span class="menu_title">მთავარი</span>
+                    </a>
+                </li>
+                <li title="IT სერვის დესკი">
+                    <a href="https://ssdasd.ge" target="_blank">
+                        <span class="menu_icon"><i class="material-icons">computer</i></span>
+                        IT სერვის დესკი
+                    </a>
+                </li>
+                
+                <li title="ინფორმაცია ბანკის შესახებ">
+                    <a href="#">
+                        <span class="menu_icon"><i class="material-icons">&#xE84F;</i></span>
+                        <span class="menu_title">ბანკის შესახებ</span>
+                    </a>
+                    <ul>
+                        <li title="" class="">
+                            <a href="/About/Views?ind=1&Id=https://somerandomshit.ge/Intra-res/docs/intranetDocs/მვა.pdf">მისია და ხედვა</a>
+                        </li>
+                        <li title="" class="">
+                            <a href="/About/Views?ind=8&Id=https://somerandomshit.ge/Intra-res/docs/intranetDocs/კქსი.pdf">ეთიკის პრინციპებისა და პროფესიული ქცევის სტანდარტების კოდექსი</a>
+                        </li>
+                        <li title="" class=""><a href="/About">ბანკის სტრუქტურა</a></li>
+                        <li title="" class="">
+                            <a href="/About/Views?ind=2&Id=https://somerandomshit.ge/Intra-res/docs/intranetDocs/ესი.pdf">შრომის შინაგანაწესი</a>
+                        </li>
+
+                        <li title="" class="">
+                            <a href="/About/Views?ind=3&Id=https://somerandomshit.ge/Intra-res/docs/intranetDocs/რები.pdf">კრიზისების მართვის გეგმა</a>
+                        </li>
+                        <li title="" class="">
+                            <a href="/About/Views?ind=13&Id=https://somerandomshit.ge//Intra-res/docs/newdocs/იო.pdf">ინფორმაციული უსაფრთხოების სახელმძღვანელო</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li title="სამსახურეობრივი პროცედურები">
+                    <a href="#">
+                        <span class="menu_icon">
+                            <i class="material-icons">
+                                work_outline
+                            </i>
+                        </span>
+                        <span class="menu_title">სამს. პროცედურები</span>
+                    </a>
+                    <ul>
+                        <li title="" class="">
+                            <a href="/About/Views?ind=4&Id=https://somerandomshit.ge/intra-res/pdf/legal/Legs.pdf"><span style="font-size:12px">იურიდიული დეპარტამენტი</span></a>
+                        </li>
+                        <li title="საკრედიტო დეპარტამენტი">
+                            <a href="https://somerandomshit.ge/Intra-res/docs/intranetDocs/კორპორატიული ეთიკის კოდექსი.docx"><span style="font-size:12px">საკრედიტო დეპარტამენტი</span></a>
+                        </li>
+                        <li title="არასრულწლოვანის მიერ საბანკო მომსახურებების განხორციელების წესები">
+                            <a href="https://somerandomshit.ge/intra-res/docs/newdocs/არასრულწლოვანის მიერ საბანკო მომსახურებების განხორციელების წესები_2015-05-19.doc"><span style="font-size:12px">არასრულწლოვანის მიერ საბანკო მომსახურებების განხორციელების წესები</span></a>
+                        </li>
+                        <li title="მომხმარებლი პრეტენზიის ფორმა">
+                            <a href="https://somerandomshit.ge/intra-res/docs/newdocs/Consumer_claim_form.xlsx"><span style="font-size:12px">მომხმარებლი პრეტენზიის ფორმა</span></a>
+                        </li>
+
+                        <li title="მიმდინარე-საბარათე ანგარიშის გახსნის წესები">
+                            <a href="https://somerandomshit.ge/intra-res/docs/newdocs/მიმდინარე-საბარათე ანგარიშის გახსნის წესები_2015-05-19_2016-08-31.docx"><span style="font-size:12px">მიმდინარე-საბარათე ანგარიშის გახსნის წესები</span></a>
+                        </li>
+                        <li title="მინდობილობის მიღებისა და გაუქმების წესი" class="">
+                            <a href="/About/Views?ind=5&Id=https://somerandomshit.ge/Intra-res/docs/newdocs/სი.pdf"><span style="font-size:12px">მინდობილობის მიღებისა და გაუქმების წესი</span></a>
+                        </li>
+                        <li title="უცხო ქვეყნის მიერ გაცემული დოკუმენტაციის მიღების წესი">
+                            <a href="https://somerandomshit.ge/intra-res/docs/newdocs/უცხო ქვეყნის მიერ გაცემული დოკუმენტაციის მიღების წესი_2015-05-19.docx"><span style="font-size:12px">უცხო ქვეყნის მიერ გაცემული დოკუმენტაციის მიღების წესი</span></a>
+                        </li>
+                        <li title="სამკვიდრო მოწმობის/სამკვიდროს მიღების შესახებ განცხადების წარდგენის შესახებ მოწმობის მიღების წესი" class="">
+                            <a href="/About/Views?ind=10&Id=https://somerandomshit.ge/intra-res/docs/newdocs/სსი.pdf"><span style="font-size:12px">სამკვიდრო მოწმობის/სამკვიდროს მიღების შესახებ განცხადების წარდგენის შესახებ მოწმობის მიღების წესი</span></a>
+                        </li>
+
+
+                        <li title="მარკეტინგული მასალა">
+                            <a href="#"><span style="font-size:12px">მარკეტინგული მასალა</span></a>
+                        </li>
+                        <li title="საკრედიტო საგადახდო დავალების მიღებისა და კლიენტის ფულადი სახსრების გადარიცხვის წესები" class="">
+                            <a href="/About/Views?ind=6&Id=https://somerandomshit.ge/intra-res/docs/newdocs/0.pdf">
+                                <span style="font-size:12px">საკრედიტო საგადახდო დავალების მიღებისა და კლიენტის ფულადი სახსრების გადარიცხვის წესები</span>
+                            </a>
+                        </li>
+                        <li title="" class="">
+                            <a style="font-size:15px;" href="/About/Views?ind=11&Id=https://somerandomshit.ge//Intra-res/docs/newdocs/ნ3.pdf">
+                                <span style="font-size:12px">
+                                    ნაღდი ფულის წარმომავლობის  შესახებ ინფორმაციის წარმოდგენის წესი
+                                </span>
+                            </a>
+                        </li>
+                        <li title="" class="">
+                            <a style="font-size:15px;" href="/About/Views?ind=12&Id=https://somerandomshit.ge//Intra-res/docs/newdocs/კლ .pdf">
+                                <span style="font-size:12px">
+                                    კლიენტის იდენტიფიკაცია ვერიფიკაციის მიზნით უცხო ქვეყნის მიერ გაცემული დოკუმენტაციის  მიღების წესი
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li title="საბანკო პროდუქტები" class="">
+                    <a href="/BankProducts">
+                        <span class="menu_icon"><i class="material-icons">&#xE8CB;</i></span>
+                        <span class="menu_title">ბანკის პროდუქტები</span>
+                    </a>
+                </li>
+
+                <li title="ბანკის თანამშრომლები" class="">
+                    <a href="#">
+                        <span class="menu_icon">
+                            <i class="material-icons">
+                                &#xE0BA;
+                            </i>
+                        </span>
+                        <span class="menu_title">თანამშრომლები</span>
+                    </a>
+                    <ul>
+                        <li title="" class="">
+                            <a href="/Employees/Index?Id=1"><span style="font-size:12px">სათავო ოფისი</span></a>
+                        </li>
+                        <li title="" class="">
+                            <a href="/Employees/Index?Id=2"><span style="font-size:12px">ცენტრალური ს/ც</span></a>
+                        </li>
+                        <li title="" class="">
+                            <a href="/Employees/Index?Id=3"><span style="font-size:12px">მთაწმინდის ს/ც</span></a>
+                        </li>
+                        <li title="" class="">
+                            <a href="/Employees/Index?Id=9"><span style="font-size:12px">ისნის ს/ც</span></a>
+                        </li>
+                        <li title="" class="">
+                            <a href="/Employees/Index?Id=6"><span style="font-size:12px">საბურთალოს ს/ც</span></a>
+                        </li>
+                        <li title="" class="">
+                            <a href="/Employees/Index?Id=4"><span style="font-size:12px">ქუთაისის ს/ც</span></a>
+                        </li>
+                        <li title="" class="">
+                            <a href="/Employees/Index?Id=5"><span style="font-size:12px">ბათუმის ს/ც</span></a>
+                        </li>
+                        <li title="" class="">
+                            <a href="/Employees/Index?Id=7"><span style="font-size:12px">გორის ს/ც</span></a>
+                        </li>
+                        <li title="" class="">
+                            <a href="/Employees/Index?Id=8"><span style="font-size:12px">თელავის ს/ც</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+
+
+                <li title="შეხვედრები" class="">
+                    <a href="/Meeting/Schedule">
+                        <span class="menu_icon"><i class="material-icons">&#xE8B5;</i></span>
+                        <span class="menu_title">შეხვედრები</span><span class="uk-badge meetingCount">0</span>
+                    </a>
+                </li>
+
+
+
+
+              <li title="ტრენინგ ცენტრი" class="">
+                    <a href="#">
+                        <span class="menu_icon"><i class="material-icons">&#xE84F;</i></span>
+                        <span class="menu_title">ტრენინგ ცენტრი</span><span class="uk-badge TrainingListCount" id="treningmsg"> 0 </span>
+                    </a>
+                    <ul>
+                        <li title="სამს. პროცედურები" class="">
+                            <a href="/TrainingCenter/ViewFileWithDesc?">
+                                <span class="menu_title">სამს. პროცედურები</span>
+                            </a>
+                        </li>
+                        <li title="ტრენინგების კალნდარი" class="">
+                            <a href="/TrainingCenter/Schedule">
+                                <span class="menu_title">ტრენინგების კალნდარი</span><span class="TrainingListCount" id="treningmsg"> </span>
+                            </a>
+                        </li>
+                        <li title="ბიბლიოთეკა" class="">
+                            <a href="/TrainingCenter/Library">
+                                <span class="menu_title">ბიბლიოთეკა</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li title="კანცელარია" class="">
+                    <a href="/Flow">
+                        <span class="menu_icon"><i class="material-icons">&#xE0E0;</i></span>
+                        <span class="menu_title">კანცელარია</span>
+                    </a>
+                </li>
+
+                <li title="დაზღვევა" class="">
+                    <a href="/Employees/Insurance">
+                        <span class="menu_icon"><i class="material-icons">library_add</i></span>
+                        <span class="menu_title">დაზღვევა</span>
+                    </a>
+                </li>
+
+                <li title="ძველი ინტრანეტი">
+                    <a href="http://intra.ge" target="_blank">
+                        <span class="menu_icon"><i class="material-icons">&#xE1B7;</i></span>
+                        <span class="menu_title">ძველი ინტრანეტი</span>
+                    </a>
+                </li>
+
+                <li title="კორპორატიული ვებგვერდი">
+                    <a href="http://www.asdasd.ge" target="_blank">
+                        <span class="menu_icon"><i class="material-icons">laptop_mac</i></span>
+                        <span class="menu_title">კორპ. ვებგვერდი</span>
+                    </a>
+                </li>
+
+                <li title="კორპორატიული ვიდეო">
+                    <a href="/Home/Corporate">
+                        <span class="menu_icon"><i class="material-icons">play_circle_outline</i></span>
+                        <span class="menu_title">კორპ. ვიდეო</span>
+                    </a>
+                </li>
+
+
+
+            </ul>
+
+        </div>
+    </aside><!-- main sidebar end -->
+    <div id="page_content">
+
+        <div id="top_bar">
+            <div class="md-top-bar">
+                <div class="uk-width-large-10-10 uk-container-center">
+                    <ul class="top_bar_nav" id="snippets_grid_filter">
+                        <li scrolldelay="0" style="padding: 10px; text-align: end; width: 100%; display: inline-block; font-family: 'Mark GEO CAPS'; font-size: 12.5px;" id="SupportText"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="divDraggable" style="margin-top:0px;  overflow: auto;">
+            
+
+<script src="/lib/jquery/dist/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/2.30.0/date-fns.min.js"></script>
+
+
+<style>
+    .search_list li + li {
+        border-top: 2px solid rgba(0, 0, 0, 0.08) !important;
+    }
+
+    .timeline_date1 {
+        float: left;
+        min-width: 60px;
+        color: #aaa;
+        text-align: center;
+        line-height: 18px;
+        font-size: 16px;
+        margin-right: 8px;
+        padding-top: 6px;
+    }
+
+        .timeline_date1 span {
+            font-size: 11px;
+            display: block;
+            text-transform: uppercase;
+        }
+
+    .timeline_date1 {
+        color: #000;
+        background: linear-gradient(to bottom, #3f51b5 0%,#3f51b5 60%,#000000 50%,#FFFFFF 50%,#FFFFFF 100%);
+        height: 60px;
+        border-radius: 10px;
+        width: 10px !important;
+        line-height: 27px;
+        font-weight: bold;
+        border: 1px solid #000;
+    }
+
+    .day {
+        font-size: 20px !important;
+        color: #fff !important;
+    }
+
+</style>
+
+
+<div id="page_content_inner">
+ 
+    <ul style="list-style-type: none; padding-left: 0px;">
+        <input id="MinValue" style="display:none" value="2024-10-01 00:00:00"></input>
+        <li class="NewsList">
+
+                <div class="md-card Index_0" id="Object_25905" ObjectID="25905" style="margin-top: 10px;border-radius:13px;box-shadow:none;">
+                    <div class="md-card-content">
+                        <ul class="md-list md-list-addon md-list-interactive">
+
+                            <li>
+                                <h3 class="search_list_heading" style="padding-left:10px;"><a href="/Shekvetili-dajavshna.html">შეკვეთილი პარაგრაფის კორპორაციული შეთავაზება ბანკის თანამშრომლებისთვის </a></h3>
+                                <br />
+                                <div class="md-list-addon-element">
+                                    <div class="timeline_date">
+                                        1 <span>სექ</span>
+                                        <span style="font-size:11px;line-height: 9px;">2025</span>
+                                    </div>
+                                </div>
+                                <div class="md-list-content" style="padding-left:10px;">
+                                    <p>რაოდენობა შეზღუდულია!  დასაჯავშნად გადადით ბმულზე <a href="/Shekvetili-dajavshna.html">Paragraph Resort & Spa Shekvetili Booking</a></p>
+                                    <p>&nbsp;</p>
+                                    <p>პირველ 30 ჯავშანს -75%, მომდევნო 70 ჯავშანს -50% იანი ფასდაკლება</p>
+                                    
+                                    <p><strong>ჯავშნებისთვის შეგიძლიათ გამოიყენოთ შემდეგი საკონტაქტო ინფორმაცია:</strong></p>
+                                    <p>გიორგი ფიშერაშვილი (რეზერვაციების მენეჯერი), +995 551 178 086 / <a href="/Shekvetili-dajavshna.html">Giorgi.Phisherashvili@Paragraphi.com</a></p>
+                                    <p>&nbsp;</p>
+                                    <b>გაითვალისწინეთ ფასდაკლება მოქმედებს მხოლოდ ქართუ ბანკის ბარათით გადახდისას!</b>
+
+
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="md-card Index_1" id="Object_25982" ObjectID="25982" style="margin-top: 10px;border-radius:13px;box-shadow:none;">
+                    <div class="md-card-content">
+                        <ul class="md-list md-list-addon md-list-interactive">
+
+                            <li>
+                                <h3 class="search_list_heading" style="padding-left:10px;"><a href="/Shekvetili-dajavshna.html">&#x10F0;&#x10D8;&#x10DA;&#x10E2;&#x10DD;&#x10DC; &#x10D1;&#x10D0;&#x10D7;&#x10E3;&#x10DB;&#x10D8;&#x10E1; &#x10D9;&#x10DD;&#x10E0;&#x10DE;&#x10DD;&#x10E0;&#x10D0;&#x10EA;&#x10D8;&#x10E3;&#x10DA;&#x10D8; &#x10E8;&#x10D4;&#x10D7;&#x10D0;&#x10D5;&#x10D0;&#x10D6;&#x10D4;&#x10D1;&#x10D0; &#x10D1;&#x10D0;&#x10DC;&#x10D9;&#x10D8;&#x10E1; &#x10D7;&#x10D0;&#x10DC;&#x10D0;&#x10DB;&#x10E8;&#x10E0;&#x10DD;&#x10DB;&#x10DA;&#x10D4;&#x10D1;&#x10D8;&#x10E1;&#x10D7;&#x10D5;&#x10D8;&#x10E1; </a></h3>
+                                <br />
+                                <div class="md-list-addon-element">
+                                    <div class="timeline_date">
+                                        29 <span>&#x10D0;&#x10DE;&#x10E0;</span>
+                                        <span style="font-size:11px;line-height: 9px;">2025</span>
+                                    </div>
+                                </div>
+                                <div class="md-list-content" style="padding-left:10px;">
+                                    <p>შეთავაზების სანახავად გადადით ბმულზე:&nbsp;<a href="\Intra-res\docs\newdocs\jnknjk">Hilton Batumi presentation,</a>&nbsp;<a href="\Intra-res\docs\newdocs\f">Hilton Batumi - Newsletter, </a><a href="\Intra-res\docs\newdocs\ება.pdf">Room Pricing.</a></p>
+
+<p>&nbsp;</p>
+
+<p><strong>ჯავშნებისთვის შეგიძლიათ გამოიყენოთ შემდეგი საკონტაქტო ინფორმაცია:</strong></p>
+
+<p><a href="mailto:BUSBT_Reservations@hilton.com">BUSBT_Reservations@hilton.com</a> (რეზერვაციების საერთო ელ-ფოსტა)</p>
+
+<p>ანა კობალაძე (რეზერვაციების მენეჯერი), +995 591 000 226 / <a href="mailto:Ana.Kobaladze@Hilton.com">Ana.Kobaladze@Hilton.com</a></p>
+
+<p>ნონა ცხვარაძე (რეზერვაციების აგენტი), +995 591 030 849 / &nbsp; <a href="mailto:Nona.Tskhvaradze@Hilton.com">Nona.Tskhvaradze@Hilton.com</a></p>
+
+<p>&nbsp;&nbsp;</p>
+
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="md-card Index_2" id="Object_25980" ObjectID="25980" style="margin-top: 10px;border-radius:13px;box-shadow:none;">
+                    <div class="md-card-content">
+                        <ul class="md-list md-list-addon md-list-interactive">
+
+                            <li>
+                                <h3 class="search_list_heading" style="padding-left:10px;"><a href="/Home/SearchNewsByID/25980">&#x10EA;&#x10D5;&#x10DA;&#x10D8;&#x10DA;&#x10D4;&#x10D1;&#x10D0; &#x10D1;&#x10D0;&#x10DC;&#x10D9;&#x10D8;&#x10E1; &#x10E1;&#x10E2;&#x10E0;&#x10E3;&#x10E5;&#x10E2;&#x10E3;&#x10E0;&#x10D0;&#x10E1;&#x10D0; &#x10D3;&#x10D0; &#x10E1;&#x10D0;&#x10E8;&#x10E2;&#x10D0;&#x10E2;&#x10DD; &#x10D2;&#x10D0;&#x10DC;&#x10E0;&#x10D8;&#x10D2;&#x10E8;&#x10D8; </a></h3>
+                                <br />
+                                <div class="md-list-addon-element">
+                                    <div class="timeline_date">
+                                        23 <span>&#x10D0;&#x10DE;&#x10E0;</span>
+                                        <span style="font-size:11px;line-height: 9px;">2025</span>
+                                    </div>
+                                </div>
+                                <div class="md-list-content" style="padding-left:10px;">
+                                    <p>&nbsp;იხ. ბანკის სტრუქტურის განახლებული <a href="http://somerandomshit.ge\Intra-res\docs\newdocs\asdads">დოკუმენტი</a></p>
+
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="md-card Index_3" id="Object_25960" ObjectID="25960" style="margin-top: 10px;border-radius:13px;box-shadow:none;">
+                    <div class="md-card-content">
+                        <ul class="md-list md-list-addon md-list-interactive">
+
+                            <li>
+                                <h3 class="search_list_heading" style="padding-left:10px;"><a href="/Home/SearchNewsByID/25960">&#x10D0;&#x10EE;&#x10D0;&#x10DA;&#x10D8; &#x10D1;&#x10D0;&#x10DC;&#x10D9;&#x10DD;&#x10DB;&#x10D0;&#x10E2;&#x10D8; </a></h3>
+                                <br />
+                                <div class="md-list-addon-element">
+                                    <div class="timeline_date">
+                                        27 <span>&#x10D7;&#x10D4;&#x10D1;</span>
+                                        <span style="font-size:11px;line-height: 9px;">2025</span>
+                                    </div>
+                                </div>
+                                <div class="md-list-content" style="padding-left:10px;">
+                                    <p>გაცნობებთ, რომ გააქტიურდა ბანკი ქართუს ახალი ბანკომატი.</p>
+
+<p>მის: თბილისი, სამგორი, მეველეს. ქ 7/9, სუპერმარკეტი ,,უნივერსამი&rsquo;&rsquo;.</p>
+
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="md-card Index_4" id="Object_25948" ObjectID="25948" style="margin-top: 10px;border-radius:13px;box-shadow:none;">
+                    <div class="md-card-content">
+                        <ul class="md-list md-list-addon md-list-interactive">
+
+                            <li>
+                                <h3 class="search_list_heading" style="padding-left:10px;"><a href="/Home/SearchNewsByID/25948">&#x10EE;&#x10D0;&#x10D6;&#x10D8;&#x10DC;&#x10D4;&#x10D1;&#x10D8;&#x10E1; &#x10DB;&#x10D0;&#x10E0;&#x10D7;&#x10D5;&#x10D8;&#x10E1; &#x10D4;&#x10E0;&#x10D7;&#x10D8;&#x10D0;&#x10DC;&#x10D8; &#x10DE;&#x10DA;&#x10D0;&#x10E2;&#x10E4;&#x10DD;&#x10E0;&#x10DB;&#x10D0; </a></h3>
+                                <br />
+                                <div class="md-list-addon-element">
+                                    <div class="timeline_date">
+                                        28 <span>&#x10D8;&#x10D0;&#x10DC;</span>
+                                        <span style="font-size:11px;line-height: 9px;">2025</span>
+                                    </div>
+                                </div>
+                                <div class="md-list-content" style="padding-left:10px;">
+                                    <p>ბანკი ქართუ ჩაერთო საქართველოს ეროვნული ბანკის ინიციატივით შექმნილ ხაზინის მართვის პროგრამული სისტემის უზრუნველყოფის პროექტში.</p>
+
+<p>ხაზინის მართვის ერთიანი პლატფორმა ხელს შეუწყობს ბანკების ხაზინების ეფექტიანობის ზრდას, საოპერაციო და ფინანსური რისკების უკეთ მართვასა და ამასთან, მნიშვნელოვნად გააუმჯობესებს ადგილობრივი ფინანსური ბაზრების მუშაობას. ეს კი, თავის მხრივ, ინვესტორთა ნდობის ამაღლებასა და გრძელვადიანი ეკონომიკური ზრდის ხელშეწყობას უზრუნველყოფს.</p>
+
+<p>დეტალური ინფორმაციისთვის იხ. - <a href="https://bit.ly/NBG-GFMTA-2025" title="https://bit.ly/NBG-GFMTA-2025"><strong>https://bit.ly/NBG-GFMTA-2025</strong></a></p>
+
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="md-card Index_5" id="Object_25937" ObjectID="25937" style="margin-top: 10px;border-radius:13px;box-shadow:none;">
+                    <div class="md-card-content">
+                        <ul class="md-list md-list-addon md-list-interactive">
+
+                            <li>
+                                <h3 class="search_list_heading" style="padding-left:10px;"><a href="/Home/SearchNewsByID/25937">&#x10E3;&#x10EA;&#x10EE;&#x10DD;&#x10E3;&#x10E0; &#x10D5;&#x10D0;&#x10DA;&#x10E3;&#x10E2;&#x10D0;&#x10E8;&#x10D8; &#x10D2;&#x10D0;&#x10D3;&#x10D0;&#x10E0;&#x10D8;&#x10EA;&#x10EE;&#x10D5;&#x10D8;&#x10E1; &#x10E1;&#x10D0;&#x10D9;&#x10DD;&#x10DB;&#x10D8;&#x10E1;&#x10D8;&#x10DD; </a></h3>
+                                <br />
+                                <div class="md-list-addon-element">
+                                    <div class="timeline_date">
+                                        15 <span>&#x10D8;&#x10D0;&#x10DC;</span>
+                                        <span style="font-size:11px;line-height: 9px;">2025</span>
+                                    </div>
+                                </div>
+                                <div class="md-list-content" style="padding-left:10px;">
+                                    <p>გაცნობებთ, რომ მომსახურების პირობებში შევიდა ცვლილება - ნებისმიერი რეზიდენტი ფიზიკური და იურიდიული პირი რომელიც გახსნის საბანკო ანგარიშს<br />
+სს ბანკი ქართუში, 2025 წლის ბოლომდე გაუნულდება უცხოურ ვალუტაში შესრულებული გადარიცხვის საკომისიო.</p>
+
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="md-card Index_6" id="Object_25935" ObjectID="25935" style="margin-top: 10px;border-radius:13px;box-shadow:none;">
+                    <div class="md-card-content">
+                        <ul class="md-list md-list-addon md-list-interactive">
+
+                            <li>
+                                <h3 class="search_list_heading" style="padding-left:10px;"><a href="/Home/SearchNewsByID/25935">&#x10E5;&#x10E3;&#x10D7;&#x10D0;&#x10D8;&#x10E1;&#x10D8;&#x10E1; &#x10E1;&#x10D4;&#x10E0;&#x10D5;&#x10D8;&#x10E1;&#x10EA;&#x10D4;&#x10DC;&#x10E2;&#x10E0;&#x10D8;&#x10E1; &#x10DB;&#x10D8;&#x10E1;&#x10D0;&#x10DB;&#x10D0;&#x10E0;&#x10D7;&#x10D8;&#x10E1; &#x10EA;&#x10D5;&#x10DA;&#x10D8;&#x10DA;&#x10D4;&#x10D1;&#x10D0; </a></h3>
+                                <br />
+                                <div class="md-list-addon-element">
+                                    <div class="timeline_date">
+                                        10 <span>&#x10D8;&#x10D0;&#x10DC;</span>
+                                        <span style="font-size:11px;line-height: 9px;">2025</span>
+                                    </div>
+                                </div>
+                                <div class="md-list-content" style="padding-left:10px;">
+                                    <p>გაცნობებთ, რომ 2025 წლის 13 იანვრიდან ქუთაისის სერვისცენტრი გადადის ახალ მისამართზე - ქ. ქუთაისი, ი. გრიშაშვილის ქ. # 41.</p>
+
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="md-card Index_7" id="Object_25926" ObjectID="25926" style="margin-top: 10px;border-radius:13px;box-shadow:none;">
+                    <div class="md-card-content">
+                        <ul class="md-list md-list-addon md-list-interactive">
+
+                            <li>
+                                <h3 class="search_list_heading" style="padding-left:10px;"><a href="/Home/SearchNewsByID/25926">&#x10E1;&#x10D8;&#x10D0;&#x10EE;&#x10DA;&#x10D4; </a></h3>
+                                <br />
+                                <div class="md-list-addon-element">
+                                    <div class="timeline_date">
+                                        27 <span>&#x10DC;&#x10DD;&#x10D4;</span>
+                                        <span style="font-size:11px;line-height: 9px;">2024</span>
+                                    </div>
+                                </div>
+                                <div class="md-list-content" style="padding-left:10px;">
+                                    <p>2024 წლის 15 ნოემბერს დირექტორატის მიერ დამტკიცებულია ბანკში მოქმედი ძირითადი პროდუქტების/სერვისების შესაბამისი მფლობელი სტრუქტურული ერთეულები.</p>
+
+<p>გთხოვთ იხილოთ თანდართული პროდუქტების/სერვისების მფლობელების<a href="\Intra-res\docs\newdocs\productlist.xlsx" target="_blank"> სია.</a></p>
+
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="md-card Index_8" id="Object_25919" ObjectID="25919" style="margin-top: 10px;border-radius:13px;box-shadow:none;">
+                    <div class="md-card-content">
+                        <ul class="md-list md-list-addon md-list-interactive">
+
+                            <li>
+                                <h3 class="search_list_heading" style="padding-left:10px;"><a href="/Home/SearchNewsByID/25919">&#x10D0;&#x10EE;&#x10D0;&#x10DA;&#x10D8; &#x10E1;&#x10E2;&#x10E0;&#x10E3;&#x10E5;&#x10E2;&#x10E3;&#x10E0;&#x10D0; </a></h3>
+                                <br />
+                                <div class="md-list-addon-element">
+                                    <div class="timeline_date">
+                                        17 <span>&#x10DD;&#x10E5;&#x10E2;</span>
+                                        <span style="font-size:11px;line-height: 9px;">2024</span>
+                                    </div>
+                                </div>
+                                <div class="md-list-content" style="padding-left:10px;">
+                                    <p>2024 წლის 01 ოქტომბერს სამეთვალყურეო საბჭოს მიერ &nbsp;დამტკიცებულ იქნა ახალი ბანკის სტრუქტურა.</p>
+
+<p>გთხოვთ, იხილოთ თანდართული <a href="https://somerandomshit.ge/Intra-res\docs\newdocs\sdasdd" target="_blank">დოკუმენტი.</a></p>
+
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="md-card Index_9" id="Object_25912" ObjectID="25912" style="margin-top: 10px;border-radius:13px;box-shadow:none;">
+                    <div class="md-card-content">
+                        <ul class="md-list md-list-addon md-list-interactive">
+
+                            <li>
+                                <h3 class="search_list_heading" style="padding-left:10px;"><a href="/Home/SearchNewsByID/25912">visa lounges </a></h3>
+                                <br />
+                                <div class="md-list-addon-element">
+                                    <div class="timeline_date">
+                                        01 <span>&#x10DD;&#x10E5;&#x10E2;</span>
+                                        <span style="font-size:11px;line-height: 9px;">2024</span>
+                                    </div>
+                                </div>
+                                <div class="md-list-content" style="padding-left:10px;">
+                                    <p>ბიზნეს ლაუნჯების განახლებული სერვისი Visa Platinum და Visa Infinite ბარათის მფლობელებისთვის.<a href="\Intra-res\docs\newdocs\Visa lounges - Copy.docx"> ბმული.</a></p>
+
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+        </li>
+    </ul>
+</div>
+
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $('#CorpVideo').bind('contextmenu', function () { return false; });
+    });
+
+
+
+
+    scrollTrigger();
+    //var JsonData = [];
+    var hasScrolled = false;
+
+
+
+
+
+    function scrollTrigger() {
+        if(document.querySelector('.Index_1') != null)
+         {
+            var scrollTop = window.scrollY || window.pageYOffset;
+            var clientHeight = window.innerHeight;
+            var scrollHeight = document.documentElement.scrollHeight;
+
+          
+           
+
+            if (scrollTop + clientHeight >= scrollHeight - 100) {
+                
+                GetDataRequest();
+              
+
+
+            }
+        }
+    }
+
+
+    window.addEventListener('scroll', scrollTrigger);
+
+
+  
+    var sentDates = new Set();
+
+    function GetDataRequest() {
+        var formattedDate = GetMinDate();
+        if (sentDates.has(formattedDate)) {
+            //console.log("დუბლიკატი თარიღი – არ იგზავნება:", formattedDate);
+            return;
+        }
+
+        sentDates.add(formattedDate);
+
+        if (sentDates.length > 5) {
+            sentDates.shift(); 
+        }
+
+        var url = '/Home/GetPreviusNewsByLastCreateDate?CreateDate=' + formattedDate;
+
+        try {
+            $.ajax({
+                type: "GET",
+                url: url,
+                dataType: 'json',
+                success: function (data) {
+                    data.forEach((e, index) => {
+                        document.body.querySelector('.NewsList').innerHTML += RenderScrolling(e);
+                    });
+                }
+            });
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }
+
+   
+
+
+
+    function GetMinDate() {
+        //var year = date.getFullYear();
+        //var month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+        //var day = String(date.getDate()).padStart(2, '0');
+        var inputDateValue = document.getElementById('MinValue').value;
+
+        var date = new Date(inputDateValue);
+        var day = date.getDate().toString().padStart(2, '0');
+        var month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-based
+        var year = date.getFullYear();
+        return year + '_' + month + '_' + day;
+    }
+
+    function RenderScrolling(object) {
+        var date = new Date(object.createDate);
+        var id = Number(object.id);
+        // Manually format date
+        var day = date.getDate().toString().padStart(2, '0');
+        var month = (date.getMonth() + 1).toString().padStart(2, '0');
+        var year = date.getFullYear();
+        var abbreviatedMonth = getDate(date, 0, true).substring(0, 3);
+
+        var dt = parseDate(GetMinDate());
+        // if (date < dt) {
+            document.querySelector("#MinValue").value = date
+        // }
+
+        var formattedDate = `${day}/${month}/${year}`;
+
+
+
+        return `
+                        <div class="md-card" id="Object_${id}" ObjectID = ${id} style="margin-top: 10px; border-radius: 13px; box-shadow: none;">
+                <div class="md-card-content">
+                    <ul class="md-list md-list-addon md-list-interactive">
+                        <li>
+                            <h3 class="search_list_heading" style="padding-left: 10px;">
+                                        <a href="/Home/SearchNewsByID/${id}">${object.title}</a>
+                            </h3>
+                            <br />
+                            <div class="md-list-addon-element">
+                                <div class="timeline_date">
+                                    ${day} <span>${abbreviatedMonth}</span>
+                                    <span style="font-size: 11px; line-height: 9px;">${year}</span>
+                                </div>
+                            </div>
+                            <div class="md-list-content" style="padding-left: 10px;">
+                                ${object.descrip}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        `;
+    }
+
+    function getDate(date, choose, onlyMonth = false) {
+        const month = {
+            1: ["იანვარი", "იანვრიდან", "იანვრამდე"],
+            2: ["თებერვალი", "თებერვლიდან", "თებერვლამდე"],
+            3: ["მარტი", "მარტიდან", "მარტამდე"],
+            4: ["აპრილი", "აპრილიდან", "აპრილამდე"],
+            5: ["მაისი", "მაისიდან", "მაისამდე"],
+            6: ["ივნისი", "ივნისიდან", "ივნისამდე"],
+            7: ["ივლისი", "ივლისიდან", "ივლისამდე"],
+            8: ["აგვისტო", "აგვისტოდან", "აგვისტომდე"],
+            9: ["სექტემბერი", "სექტემბრიდან", "სექტემბრამდე"],
+            10: ["ოქტომბერი", "ოქტომბრიდან", "ოქტომბრამდე"],
+            11: ["ნოემბერი", "ნოემბრიდან", "ნოემბრამდე"],
+            12: ["დეკემბერი", "დეკემბრიდან", "დეკემბრამდე"]
+        };
+
+        // Ensure the date parameter is a Date object
+        if (!(date instanceof Date)) {
+            throw new Error('The date parameter must be a Date object.');
+        }
+
+        const monthIndex = date.getMonth() + 1; // JavaScript months are 0-based
+        const monthNames = month[monthIndex];
+
+        return onlyMonth ? monthNames[choose] : `${date.getDate()} ${monthNames[choose]}`;
+    }
+    function parseDate(dateString) {
+        // Split the date string into components
+        var parts = dateString.split('_');
+        //if (parts.length !== 3) {
+        //    throw new Error("Invalid date format. Expected format: yyyy_MM_dd.");
+        //}
+
+        // Extract year, month, and day from the parts
+        var year = parseInt(parts[0], 10);
+        var month = parseInt(parts[1], 10) - 1; // Months are zero-indexed in JavaScript Date
+        var day = parseInt(parts[2], 10);
+
+        // Create and return a new Date object
+        return new Date(year, month, day);
+    }
+</script>
+
+
+
+
+
+<script>
+    function GetNewsNotificationRequest() {
+
+     
+
+        var url = '/Home/GetEmotionByNewsID?NewsID=' + 25892;
+        try {
+            $.ajax({
+                type: "GET",
+                url: url,
+                dataType: 'json',
+                success: function (data) {
+                    //data.forEach((e, index) => {
+                    //    document.body.querySelector('.NewsList').innerHTML += RenderScrolling(e);
+                    //});
+                    console.log(data);
+
+                }
+            });
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+
+        
+        //return JsonData;
+    }
+
+</script>
+        </div>
+
+    </div>
+
+    <!-- secondary sidebar -->
+    <aside id="sidebar_secondary">
+        <ul class="uk-tab uk-tab-icons uk-tab-grid" data-uk-tab="{connect:'#dashboard_sidebar_tabs', animation:'slide-horizontal'}">
+            <li class="uk-active uk-width-2-2"><a href="#"><i class="material-icons">&#xE422;</i></a></li>
+        </ul>
+        <div class="scrollbar-inner">
+            <ul id="dashboard_sidebar_tabs" class="uk-switcher">
+                <li style="padding:1px 10px 0 !important;" id="tasksViewer">
+                    
+
+
+    <h4 class="heading_c uk-margin-small-bottom uk-margin-top">განაცხადები / შეტყობინებები</h4>
+    <div class="scroll-wrapper scrollbar-inner" style="position: relative;">
+        <div class="scrollbar-inner scroll-content scroll-scrolly_visible" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 250px;">
+            <ul class="md-list md-list-addon md-list-interactive" id="tasksList" style="min-height:250px;max-height:250px;">
+                
+<script>
+    function Redirect(id) {
+        location.href = "/Flow/View/" + id;
+    }
+</script>
+            </ul>
+            </div>
+        </div>
+            <hr class="md-hr" style="margin:2px !important;">
+                <ul class="md-list md-list-addon">
+
+
+
+
+                    
+                        <h4 class="heading_c uk-margin-small-bottom uk-margin-top"
+                            style="color: red;border-bottom: 1px solid rgba(0, 0, 0, 0.12);padding: 8px 0px;">
+                            ვულოცავთ დაბადების დღეს !
+                        </h4>
+
+                        <li>
+                            <div class="md-list-addon-element">
+                                <a href="/Employees/Profile/e8356b5b-7a07-4d12-ad72-59e1688adae0"> <img class="md-user-image md-list-addon-avatar" src="intra-res/staff/2692.JPG" alt="" style="width:120px;height:80px; border-radius:5px !important;width: auto !important;"> </a>
+                            </div>
+                            <div class="md-list-content" style="padding-left:10px;">
+                                <div class="md-list-action-placeholder"></div>
+                                <span class="md-list-heading uk-text-muted uk-text-truncate" style="font-size:15px;"><a href="/Employees/Profile/e8356b5b-7a07-4d12-ad72-59e1688adae0"> შეკვეთილი პარაგრაფი </a></span>
+                                <span class="uk-text-small uk-text-muted uk-text-truncate" style="padding-top:3px;"><i class="md-list-addon-icon material-icons">&#xE916;</i>&nbsp;&nbsp; 1 &#x10E1;&#x10D4;&#x10E5;&#x10E2;&#x10D4;&#x10DB;&#x10D1;&#x10D4;&#x10E0;&#x10D8;
+;</span>
+                                <span class="uk-text-small uk-text-muted uk-text-truncate" style="padding-top:2px;"><i class="md-list-addon-icon material-icons">&#xE0CD;</i>&nbsp;&nbsp; 032 299 99 00 </span>
+
+                                <span class="uk-text-small uk-text-muted uk-text-truncate"
+                                      style="display: inline-block;">
+                                    <a href="mailto:mariam.someshit.ge">  გაუგზავნე მისალოცი წერილი </a>
+                                </span>
+                            </div>
+                        </li>
+
+
+
+                </ul>
+
+
+<script>
+    function ShowTask(url, id) {
+
+
+    }
+</script>
+
+
+<script type="text/javascript">
+        $(function () {
+            setInterval(function () {
+                $('#tasksList').load('/Flow/TasksListPartiolView');
+            },
+            7000);
+        });
+</script>
+
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <!-- secondary sidebar end -->
+
+
+
+    <style>
+       /* #divDraggable {
+            height: auto;
+            overflow: auto;
+            border: 1px solid #ccc;
+        }*/
+    </style>
+
+    <script>
+
+        //function Test(){
+        //    var DateTime = new Date();
+        //    var DateTime2 = new Date("2023-10-05");
+        //    var timeDifferenceMilliseconds =  DateTime2 -DateTime ;
+
+        //            // Extract day, hour, minute, and second
+        //    var daysDifference = Math.floor(timeDifferenceMilliseconds / (1000 * 60 * 60 * 24));
+        //    var hoursDifference = Math.floor((timeDifferenceMilliseconds % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        //    var minutesDifference = Math.floor((timeDifferenceMilliseconds % (1000 * 60 * 60)) / (1000 * 60));
+        //    var secondsDifference = Math.floor((timeDifferenceMilliseconds % (1000 * 60)) / 1000);
+       
+
+        //    var string = `${daysDifference} დღე, ${hoursDifference} საათი, ${minutesDifference} წუთი და ${secondsDifference} წამი`;
+        //    return string;
+        //}
+
+        //document.querySelector('#divDraggable').addEventListener('scroll', scrollTrigger);
+
+        //function scrollTrigger() {
+        //    var element = document.querySelector('#divDraggable');
+        //    var scrollTop = element.scrollTop;
+        //    var clientHeight = element.clientHeight;
+        //    var scrollHeight = element.scrollHeight;
+
+        //    console.log('ScrollTop:', scrollTop);
+        //    console.log('ClientHeight:', clientHeight);
+        //    console.log('ScrollHeight:', scrollHeight);
+
+        //    alert('Scroll event triggered');
+
+        //    if (scrollTop + clientHeight >= scrollHeight) {
+        //        alert('End of scroll');
+        //    }
+        //}
+       
+
+
+        // function SupportTimeTextHandler() {
+        //     var DateTime = new Date();
+        //     var DateTime2 = new Date("2023-10-05");
+        //     DateTime2.setHours(10);
+        //     DateTime2.setMinutes(0);
+        //     DateTime2.setSeconds(0);
+        //     var timeDifferenceMilliseconds = DateTime2 - DateTime;
+        //     //var timeDifferenceMilliseconds =   DateTime - DateTime2;
+
+        //     // Calculate the time difference in days, hours, minutes, and seconds
+        //     var daysDifference = Math.floor(timeDifferenceMilliseconds / (1000 * 60 * 60 * 24));
+        //     var hoursDifference = Math.floor((timeDifferenceMilliseconds % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        //     var minutesDifference = Math.floor((timeDifferenceMilliseconds % (1000 * 60 * 60)) / (1000 * 60));
+        //     var secondsDifference = Math.floor((timeDifferenceMilliseconds % (1000 * 60)) / 1000);
+
+        //     // Create Georgian language strings for hours, minutes, and seconds
+        //     var hoursString = 'საათი';
+        //     var minutesString =  'წუთი';
+        //     var secondsString =  'წამი' ;
+        //     var daysString = 'დღე';
+
+        //     // Format the time difference in Georgian language
+        //     var string = 'IT ინციდენტების და მოთხოვნების პორტალის გაშვებამდე დარჩენილია ';
+
+        //     if (daysDifference > 0) {
+        //         string += `${daysDifference} ${daysString}, `;
+        //     }
+
+        //     if (hoursDifference > 0) {
+        //         string += `${hoursDifference} ${hoursString}, `;
+        //     }
+
+        //     if (minutesDifference > 0) {
+        //         string += `${minutesDifference} ${minutesString} და `;
+        //     }
+        //     if (secondsDifference > 0) {
+        //         string += `${secondsDifference} ${secondsString}  `;
+        //     }
+        //     if(string == 'IT ინციდენტების და მოთხოვნების პორტალის გაშვებამდე დარჩენილია '){
+        //         string = "";
+        //     }
+           
+        //     return string;
+        //     }
+        // setInterval(function () {
+        //     var formattedTimeDifference = SupportTimeTextHandler();
+        //     document.getElementById("SupportText").innerHTML = formattedTimeDifference;
+        // }, 1000)
+       
+           function loadDoc() {
+            $.ajax({
+                type: "GET",
+                url: "/Meeting/GettreningItemsCount",
+                success: function (data) {
+                    // Process the data here
+                    console.log(data);
+                        var elem = document.querySelectorAll(".meetingCount");
+                    elem.forEach(e => { e.innerHTML = data });
+                },
+                error: function (xhr, status, error) {
+
+                }
+            })
+            $.ajax({
+                type: "GET",
+                url: "/TrainingCenter/GetNumberOfUpComingTrainings",
+                success: function (data) {
+                    // Process the data here
+                    console.log(data);
+                    Result = data;
+                    var elem = document.querySelectorAll(".TrainingListCount");
+                    elem.forEach((e,index) => {
+                       
+                        e.innerHTML = index == 1 ?  " (" + data + ")" : " " +  data
+                    });
+                },
+                error: function (xhr, status, error) {
+                }
+            })
+
+            $.ajax({
+                type: "GET",
+                url: "/Employees/IsValidDocType",
+                success: function (data) {
+                    var min = 1; // Minimum value
+                    var max = 20; // Maximum value
+                    var randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+                    //var randomNumber = 17;
+                    console.log("Number " + randomNumber)
+                    if (data != "" && randomNumber >= 10 && window.location.href.endsWith("Employees/Insurance") == false) {
+                        swal({
+                            title: "შეტყობინება",
+                            text: data.replace(/,/g, "\n"),
+                            icon: "warning",
+                            buttons: {
+                                
+                                button1: {
+                                    text: "გათიშვა",
+                                    value: "success",
+                                },
+                                Redirect: {
+                                    text: 'გადასვლა დაზღვევის მოდულში', // Text for the button
+                                    value: 'redirect', // A value that can be used in the promise result
+                                    className: 'custom-redirect-button', // Custom CSS class for the button
+                                    closeModal: false, // Set to true to automatically close the dialog when clicked
+                                },
+                            },
+                            dangerMode: true,
+                        })
+                            .then((value) => {
+                                if (value === "success") {
+                                    // Show the success dialog and exit
+                                    swal({
+                                        title: "",
+                                        text: "",
+                                        icon: "success",
+                                        buttons: false, // Hide all buttons
+                                    }); 
+                                    setTimeout(() => {
+                                        swal.close(); // Close the currently open SweetAlert dialog
+                                    }, 800);
+                                }
+                                if (value === "redirect") {
+                                    // Show the success dialog and exit
+                                    swal({
+                                        title: "სტატუსი!",
+                                        text: "მიმდინარეობს გადასვლა დაზღვევის მოდულში",
+                                        icon: "success",
+                                        buttons: false, // Hide all buttons
+                                    });
+                                    setTimeout(() => {
+                                        swal.close(); // Close the currently open SweetAlert dialog
+                                        window.location.href = '/Employees/Insurance';
+
+                                    }, 2000);
+                                   
+                                }
+                            });
+
+
+
+
+                    }
+                
+                   
+                },
+                error: function (xhr, status, error) {
+                  
+                }
+            })
+        }
+
+
+
+        window.addEventListener("load", loadDoc);
+        //TrainingListCount
+        //meetingCount
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"> </script>
+    
+
+    
+
+        <script src="/lib/jquery/jquery-2.2.0.min.js"></script>
+        <script src="/js/select2.js"></script>
+        <script>(window.jQuery || document.write("\u003Cscript src=\u0022\/lib\/jquery\/dist\/jquery.min.js\u0022\u003E\u003C\/script\u003E"));</script>
+        <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+        <script>(window.jQuery && window.jQuery.fn && window.jQuery.fn.modal || document.write("\u003Cscript src=\u0022\/lib\/bootstrap\/dist\/js\/bootstrap.min.js\u0022\u003E\u003C\/script\u003E"));</script>
+        <script src="/js/site.min.js?v=ioPRhDkEHQH9H1hjrZY3H-C1PmP13i9UKscg6lAKxg8"></script>
+
+        <script src="/js/jquery-confirm.js"></script>
+
+        <script src="/assets/js/common.min.js"></script>
+        <!-- uikit functions -->
+        <script src="/assets/js/uikit_custom.min.js"></script>
+        <!-- altair common functions/helpers -->
+        <script src="/assets/js/altair_admin_common.min.js"></script>
+
+        <!-- page specific plugins -->
+        <!-- fullcalendar -->
+        <script src="/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+        <!-- calendar functions -->
+        <script src="/assets/js/pages/plugins_fullcalendar.min.js></script>
+
+        <!-- <script src="~/bower_components/enjoyhint/enjoyhint.js"></script>-->
+
+
+    <!-- kendo UI -->
+        <script src="/assets/js/kendoui_custom.min.js"></script>
+        <script src="/assets/js/pages/kendoui.min.js"></script>
+
+
+        <script src="/bower_components/ckeditor/ckeditor.js"></script>
+        <script src="/bower_components/ckeditor/adapters/jquery.js"></script>
+        <script src="/js/jquery.geokbd.js"></script>
+        <script src="/assets/js/pages/components_notifications.min.js"></script>
+        <!--  mailbox functions -->
+        <script src="/assets/js/pages/page_mailbox.min.js"></script>
+
+
+        <script>
+            jQuery('#searchField').geokbd();
+        </script>
+
+        <script>
+            altair_forms.parsley_validation_config();
+            $(document).ready(function () {
+                $('#unet_calendar').kendoCalendar();
+                startTime();
+            });
+
+            function startTime() {
+                var monthNames = ["იანვარი", "თებერვალი", "მარტი", "აპრილი", "მაისი", "ივნისი", "ივლისი", "აგვისტო", "სექტემბერი", "ოქტომბერი", "ნოემბერი", "დეკემბერი"];
+
+                var today = new Date();
+                var h = today.getHours();
+                var m = today.getMinutes();
+                var s = today.getSeconds();
+                m = checkTime(m);
+                s = checkTime(s);
+                document.getElementById('clock').innerHTML = '<sup>' + (today.getDate()) + ' ' + monthNames[today.getMonth()] + '</sup> ' +
+                    h + ":" + m;//+ '<sup style="">' + s + '</sup>';
+                var t = setTimeout(startTime, 1000);
+            }
+            function checkTime(i) {
+                if (i < 10) { i = "0" + i };
+                return i;
+            }
+        </script>
+
+        <script src="/assets/js/pages/components_nestable.min.js"></script>
+        <script src="/assets/js/pages/components_preloaders.min.js"></script>
+        <script src="/bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js"></script>
+        <script src="/assets/js/pages/forms_advanced.min.js"></script>
+        <script src="/assets/js/pages/forms_advanced.min.js"></script>
+        <script src="/bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js"></script>
+
+        <script src="/bower_components/parsleyjs/dist/parsley.min.js"></script>
+        <!-- jquery steps -->
+        <script src="/assets/js/custom/wizard_steps.min.js"></script>
+
+        <script src="/js/date.min.js"></script>
+        <script src="/js/ka-GE.min.js"></script>
+        <script src="/assets/js/pages/components_notifications.min.js"></script>
+        <script src="/assets/js/pages/page_notes.min.js"></script>
+
+        <!-- peity (small charts) -->
+        <script src="/bower_components/peity/jquery.peity.min.js"></script>
+        <!-- countUp -->
+        <script src="/bower_components/countUp.js/dist/countUp.min.js"></script>
+
+        <!-- chartist (chartscharts) -->
+        <script src="/bower_components/chartist/dist/chartist.min.js"></script>
+        <!-- peity (small charts) -->
+        <script src="/bower_components/peity/jquery.peity.min.js"></script>
+
+        <script src="/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+        <!-- countUp -->
+        <script src="/bower_components/countUp.js/dist/countUp.min.js"></script>
+        <!-- fitvids -->
+        <script src="/bower_components/fitvids/jquery.fitvids.js"></script>
+
+        <!-- page specific plugins -->
+        <!-- datatables -->
+        <script src="/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+        <!-- datatables custom integration -->
+        <script src="/assets/js/custom/datatables_uikit.min.js"></script>
+        <!--  datatables functions -->
+        <script src="/assets/js/pages/plugins_datatables.min.js"></script>
+        <!-- fullcalendar -->
+        <!--<script src="/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>-->
+        <!--  calendar functions -->
+        <!--<script src="/assets/js/pages/plugins_fullcalendar.min.js"></script>-->
+
+        <script src="/bower_components/jquery-ui/ui/core.js"></script>
+        <script src="/bower_components/jquery-ui/ui/widget.js"></script>
+        <script src="/bower_components/jquery-ui/ui/mouse.js"></script>
+        <script src="/bower_components/jquery-ui/ui/draggable.js"></script>
+        <script src="/bower_components/jquery-ui/ui/resizable.js"></script>
+        <script src="/js/chat/jquery.titlealert.js"></script>
+
+
+        <script src="/lib/emoji/prettify.js"></script>
+        <script src="/lib/emoji/emojionearea.js"></script>
+        <script src="/js/chat/jquery.playSound.js"></script>
+        <script src="/w2ui/w2ui-1.5.rc1.min.js"></script>
+
+        <script>
+            jQuery('#onlineSeach').geokbd();
+        </script>
+
+
+        <!--  search results functions -->
+
+
+        
+
+    
+
+
+
+
+    
+</body>
+
+
+</html>

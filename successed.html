@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Javshani</title>
+<style>
+  body {
+    margin: 0; padding: 0;
+    height: 100vh;
+    background: url('bac.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative;
+  }
+
+  /* Dark overlay for better text visibility */
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.55); /* semi-transparent black */
+    z-index: 0;
+  }
+
+  /* Container to stack content above overlay */
+  .container {
+    z-index: 1;
+    position: relative;
+    padding: 20px 40px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.35);
+    box-shadow: 0 0 25px rgba(40, 167, 69, 0.7); /* subtle green glow */
+    max-width: 90vw;
+    max-height: 80vh;
+  }
+
+  .checkmark {
+    font-size: 120px;
+    color: #28a745;
+    margin-bottom: 20px;
+    user-select: none;
+    text-shadow: 0 0 15px #28a745;
+  }
+
+  h1 {
+    font-size: 2.8rem;
+    margin: 0 0 15px 0;
+    font-weight: 700;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+  }
+
+  p {
+    font-size: 1.3rem;
+    margin: 4px 0;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+  }
+
+  .small-text {
+    font-size: 0.9rem;
+    opacity: 0.75;
+    margin-top: 40px;
+    font-style: italic;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="checkmark">✔</div>
+  <h1>გადახდა შესრულებულია</h1>
+  <p id="nameDisplay">Thank you, Guest!</p>
+  <p id="datesDisplay"></p>
+  <p class="small-text">გაბრუნებთ Intranet_ზე...</p>
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const name = params.get("name") || "Guest";
+  const dates = params.get("dates") || "";
+
+  document.getElementById("nameDisplay").textContent = `გმადლობთ ნდობისთვის ${name}!`;
+  document.getElementById("datesDisplay").textContent = `ჯავშნის თარიღებია: ${dates}`;
+
+  setTimeout(() => {
+    window.location.href = "google.com/";
+  }, 30000); // delay 3 seconds
+</script>
+
+</body>
+</html>
