@@ -3,15 +3,14 @@
 <head>
   
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XE1WXHZ2ZJ"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-XE1WXHZ2ZJ');
+fetch("https://script.google.com/macros/s/AKfycbzEYJgcJueIVOYDy5Iagv_p1OMxMd3Qw77j8xisUdcJBop3HjqnWYHfQalwUuFypPaQ/exec", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ url: window.location.href })
+});
 </script>
+
 
 
 <meta charset="UTF-8" />
