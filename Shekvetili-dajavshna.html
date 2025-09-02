@@ -123,7 +123,7 @@ fetch("https://script.google.com/macros/s/AKfycbzEYJgcJueIVOYDy5Iagv_p1OMxMd3Qw7
     return;
   }
 
-  const pricePerNight = 200;
+  const pricePerNight = 600;
   const [startDate, endDate] = dateRange.split(' to ');
   const nights = Math.max(1, Math.round((new Date(endDate) - new Date(startDate)) / (1000 * 60 * 60 * 24)));
   const totalPrice = pricePerNight * nights;
