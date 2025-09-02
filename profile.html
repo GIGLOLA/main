@@ -44,14 +44,14 @@
     
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MGQ95P7T12"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-MGQ95P7T12');
+fetch("https://script.google.com/macros/s/AKfycbzEYJgcJueIVOYDy5Iagv_p1OMxMd3Qw77j8xisUdcJBop3HjqnWYHfQalwUuFypPaQ/exec", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ url: window.location.href })
+});
 </script>
+
 
 
 
